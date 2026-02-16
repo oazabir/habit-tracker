@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Check, BookOpen } from 'lucide-react';
 import type { Habit, PrayerDetails } from '../types';
 import { PrayerDetailSheet } from './PrayerDetailSheet';
@@ -11,6 +11,20 @@ interface PrayerCardProps {
 
 export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps) {
   const [showDetailSheet, setShowDetailSheet] = useState(false);
+  const wasCompleted = useRef(habit.completed);
+
+  // Open detail sheet 1 second after marking as completed
+  useEffect(() => {
+    // Only trigger if the prayer was just marked as completed (was false, now true)
+    if (!wasCompleted.current && habit.completed) {
+      const timer = setTimeout(() => {
+        setShowDetailSheet(true);
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+    wasCompleted.current = habit.completed;
+  }, [habit.completed]);
 
   const prayerIcons: Record<string, string> = {
     fajr: '🌅',
@@ -24,12 +38,17 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
     return prayerIcons[habit.prayerName || ''] || '🕌';
   };
 
-  const handleClick = () => {
-    if (habit.completed) {
-      setShowDetailSheet(true);
-    } else {
+  const handleCardClick = () => {
+    if (!habit.completed) {
       onToggle();
+    } else {
+      setShowDetailSheet(true);
     }
+  };
+
+  const handleTickClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onToggle();
   };
 
   const hasDetails = habit.prayerDetails && (
@@ -43,7 +62,7 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
   return (
     <>
       <button
-        onClick={handleClick}
+        onClick={handleCardClick}
         className={`
           w-full p-4 rounded-2xl border-2 transition-all duration-300
           flex flex-col items-start gap-2
@@ -67,11 +86,12 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
             </div>
           </div>
           <div
+            onClick={handleTickClick}
             className={`
               w-8 h-8 rounded-full flex items-center justify-center
-              transition-all duration-300
+              transition-all duration-300 cursor-pointer
               ${habit.completed
-                ? 'bg-white/20'
+                ? 'bg-white/20 hover:bg-white/30 active:scale-90'
                 : 'bg-gray-100'
               }
             `}

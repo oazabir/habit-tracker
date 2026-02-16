@@ -100,9 +100,9 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
       {hasInfo && (
         <button
           onClick={onInfoClick}
-          className="p-2 rounded-full hover:bg-gray-200 transition-colors"
+          className="relative p-2 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white animate-glow touch-manipulation"
         >
-          <Info className="w-5 h-5 text-gray-400" />
+          <Info className="w-5 h-5" />
         </button>
       )}
     </div>
@@ -172,14 +172,14 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
         </div>
       </div>
 
-      {/* Adhkar Info Modal */}
+      {/* Adhkar Info Bottom Sheet */}
       {showAdhkarInfo && (
         <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4"
+          className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-[60]"
           onClick={() => setShowAdhkarInfo(false)}
         >
           <div
-            className="bg-white w-full max-w-md rounded-2xl p-6 animate-slide-up max-h-[80vh] overflow-y-auto"
+            className="bg-white w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">
@@ -221,14 +221,14 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
         </div>
       )}
 
-      {/* Ayatul Kursi Info Modal */}
+      {/* Ayatul Kursi Info Bottom Sheet */}
       {showAyatulKursiInfo && (
         <div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-[60] p-4"
+          className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-[60]"
           onClick={() => setShowAyatulKursiInfo(false)}
         >
           <div
-            className="bg-white w-full max-w-md rounded-2xl p-6 animate-slide-up max-h-[80vh] overflow-y-auto"
+            className="bg-white w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">

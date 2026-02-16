@@ -17,6 +17,23 @@ export const calculateDayScore = (habits: Habit[]): number => {
   return Math.round(prayerScore + quranScore + duaScore);
 };
 
+export const isDayComplete = (habits: Habit[]): boolean => {
+  // All 5 prayers must be completed
+  const prayerHabits = habits.filter(h => h.type === 'prayer');
+  const allPrayersCompleted = prayerHabits.length === PRAYERS.length &&
+    prayerHabits.every(h => h.completed);
+
+  // At least 1 quran page
+  const quranHabit = habits.find(h => h.type === 'quran');
+  const hasQuran = (quranHabit?.quranPages || 0) >= 1;
+
+  // At least 1 dua
+  const duaHabit = habits.find(h => h.type === 'dua');
+  const hasDua = (duaHabit?.duaCount || 0) >= 1;
+
+  return allPrayersCompleted && hasQuran && hasDua;
+};
+
 export const calculateWeeklyStats = (tracking: DailyTracking[], weekDate: Date = new Date()): WeeklyStats => {
   const weekDays = getWeekDays(weekDate);
   const today = formatDate(new Date());

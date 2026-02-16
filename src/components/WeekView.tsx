@@ -1,6 +1,7 @@
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Check } from 'lucide-react';
 import type { DailyTracking } from '../types';
 import { getWeekDays, getDayName, getDayNumber, formatDate, formatWeekRange } from '../utils/date';
+import { isDayComplete } from '../utils/stats';
 
 interface WeekViewProps {
   selectedDate: string;
@@ -77,6 +78,12 @@ export function WeekView({
     return dayTracking?.score || 0;
   };
 
+  const getDayComplete = (date: Date): boolean => {
+    const dateString = formatDate(date);
+    const dayTracking = tracking.find(t => t.date === dateString);
+    return dayTracking ? isDayComplete(dayTracking.habits) : false;
+  };
+
   const isToday = (date: Date): boolean => {
     return formatDate(date) === formatDate(new Date());
   };
@@ -134,11 +141,17 @@ export function WeekView({
               <span className={`text-sm font-bold mb-1 ${selectedFlag ? 'text-white' : 'text-gray-800'}`}>
                 {getDayNumber(day)}
               </span>
-              <CircularProgress
-                score={score}
-                size={36}
-                strokeWidth={3}
-              />
+              {getDayComplete(day) ? (
+                <div className="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center">
+                  <Check className="w-5 h-5 text-white" strokeWidth={3} />
+                </div>
+              ) : (
+                <CircularProgress
+                  score={score}
+                  size={36}
+                  strokeWidth={3}
+                />
+              )}
             </button>
           );
         })}
