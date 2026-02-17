@@ -22,8 +22,8 @@ export function DuaCounter({ habit, onUpdate }: DuaCounterProps) {
       className={`
         p-4 rounded-2xl border-2 transition-all duration-300
         ${count > 0
-          ? 'bg-gradient-to-r from-purple-500 to-purple-600 border-purple-500 shadow-lg shadow-purple-500/30'
-          : 'bg-white border-gray-200'
+          ? 'bg-gradient-to-r from-primary-500 to-primary-600 border-primary-500 shadow-lg shadow-primary-500/30'
+          : 'bg-surface-card border-accent-200'
         }
       `}
     >
@@ -31,10 +31,10 @@ export function DuaCounter({ habit, onUpdate }: DuaCounterProps) {
         <div className="flex items-center gap-3">
           <span className="text-2xl">🤲</span>
           <div>
-            <h3 className={`font-semibold ${count > 0 ? 'text-white' : 'text-gray-800'}`}>
+            <h3 className={`font-semibold ${count > 0 ? 'text-white' : 'text-text-primary'}`}>
               Dua
             </h3>
-            <p className={`text-sm ${count > 0 ? 'text-purple-100' : 'text-gray-500'}`}>
+            <p className={`text-sm ${count > 0 ? 'text-primary-100' : 'text-text-muted'}`}>
               Remember Allah throughout the day
             </p>
           </div>
@@ -49,7 +49,7 @@ export function DuaCounter({ habit, onUpdate }: DuaCounterProps) {
             transition-all duration-200 active:scale-90 touch-manipulation
             ${count > 0
               ? 'bg-white/20 text-white hover:bg-white/30'
-              : 'bg-gray-100 text-gray-400'
+              : 'bg-accent-100 text-text-light'
             }
           `}
         >
@@ -57,10 +57,10 @@ export function DuaCounter({ habit, onUpdate }: DuaCounterProps) {
         </button>
 
         <div className="text-center min-w-[80px]">
-          <div className={`text-4xl font-bold ${count > 0 ? 'text-white' : 'text-gray-800'}`}>
+          <div className={`text-4xl font-bold ${count > 0 ? 'text-white' : 'text-text-primary'}`}>
             {count}
           </div>
-          <div className={`text-sm ${count > 0 ? 'text-purple-100' : 'text-gray-500'}`}>
+          <div className={`text-sm ${count > 0 ? 'text-primary-100' : 'text-text-muted'}`}>
             {count === 1 ? 'dua' : 'duas'}
           </div>
         </div>
@@ -72,7 +72,7 @@ export function DuaCounter({ habit, onUpdate }: DuaCounterProps) {
             transition-all duration-200 active:scale-90 touch-manipulation
             ${count > 0
               ? 'bg-white/20 text-white hover:bg-white/30'
-              : 'bg-purple-100 text-purple-600 hover:bg-purple-200'
+              : 'bg-primary-100 text-primary-600 hover:bg-primary-200'
             }
           `}
         >
@@ -83,7 +83,7 @@ export function DuaCounter({ habit, onUpdate }: DuaCounterProps) {
       {count > 0 && (
         <div className="mt-3 text-center">
           <span className="text-white/80 text-sm">
-            {count >= 10 ? "Alhamdulillah! Beautiful devotion! ✨" : "Keep connecting with Allah! 💜"}
+            {count >= 10 ? "Alhamdulillah! Beautiful devotion! ✨" : "Keep connecting with Allah! 💚"}
           </span>
         </div>
       )}

@@ -13,40 +13,40 @@ export function WeeklySummary({ stats }: WeeklySummaryProps) {
       label: 'Prayers',
       value: `${stats.completedPrayers}/${stats.totalPrayers}`,
       subValue: `${stats.completionRate}%`,
-      bgColor: 'bg-emerald-100',
-      iconColor: 'text-emerald-600',
+      bgColor: 'bg-accent-100',
+      iconColor: 'text-primary-600',
     },
     {
       icon: BookOpen,
       label: 'Quran',
       value: stats.totalQuranPages,
       subValue: 'pages',
-      bgColor: 'bg-blue-100',
-      iconColor: 'text-blue-600',
+      bgColor: 'bg-accent-100',
+      iconColor: 'text-primary-500',
     },
     {
       icon: MessageCircle,
       label: 'Duas',
       value: stats.totalDuas,
       subValue: 'made',
-      bgColor: 'bg-purple-100',
-      iconColor: 'text-purple-600',
+      bgColor: 'bg-accent-100',
+      iconColor: 'text-accent-600',
     },
     {
       icon: Flame,
       label: 'Streak',
       value: stats.streakDays,
       subValue: 'days',
-      bgColor: 'bg-orange-100',
-      iconColor: 'text-orange-600',
+      bgColor: 'bg-amber-100',
+      iconColor: 'text-amber-600',
     },
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4">
       <div className="flex items-center gap-2 mb-4">
-        <TrendingUp className="w-5 h-5 text-emerald-600" />
-        <h3 className="font-semibold text-gray-800">Weekly Summary</h3>
+        <TrendingUp className="w-5 h-5 text-primary-600" />
+        <h3 className="font-semibold text-text-primary">Weekly Summary</h3>
       </div>
 
       {stats.streakDays >= 3 && (
@@ -69,11 +69,11 @@ export function WeeklySummary({ stats }: WeeklySummaryProps) {
           >
             <div className="flex items-center gap-2 mb-2">
               <item.icon className={`w-4 h-4 ${item.iconColor}`} />
-              <span className="text-sm font-medium text-gray-700">{item.label}</span>
+              <span className="text-sm font-medium text-text-secondary">{item.label}</span>
             </div>
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-gray-800">{item.value}</span>
-              <span className="text-xs text-gray-500">{item.subValue}</span>
+              <span className="text-2xl font-bold text-text-primary">{item.value}</span>
+              <span className="text-xs text-text-muted">{item.subValue}</span>
             </div>
           </div>
         ))}
@@ -81,13 +81,13 @@ export function WeeklySummary({ stats }: WeeklySummaryProps) {
 
       {/* Progress bar for prayers */}
       <div className="mt-4">
-        <div className="flex justify-between text-sm text-gray-600 mb-1">
+        <div className="flex justify-between text-sm text-text-secondary mb-1">
           <span>Prayer completion</span>
           <span className="font-medium">{stats.completionRate}%</span>
         </div>
-        <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+        <div className="h-3 bg-surface-muted rounded-full overflow-hidden">
           <div
-            className="h-full bg-gradient-to-r from-emerald-400 to-emerald-600 rounded-full transition-all duration-500"
+            className="h-full bg-gradient-to-r from-primary-400 to-primary-600 rounded-full transition-all duration-500"
             style={{ width: `${stats.completionRate}%` }}
           />
         </div>

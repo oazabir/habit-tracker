@@ -48,23 +48,23 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
   });
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <Users className="w-5 h-5 text-purple-600" />
-          <h3 className="font-semibold text-gray-800">{group.name}</h3>
+          <Users className="w-5 h-5 text-primary-600" />
+          <h3 className="font-semibold text-text-primary">{group.name}</h3>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowInvite(!showInvite)}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-100 text-purple-700 rounded-full hover:bg-purple-200 transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-accent-100 text-primary-600 rounded-full hover:bg-accent-200 transition-colors"
           >
             <UserPlus className="w-4 h-4" />
             Invite
           </button>
           <button
             onClick={onLeave}
-            className="p-2 text-gray-400 hover:text-red-500 transition-colors"
+            className="p-2 text-text-light hover:text-red-500 transition-colors"
           >
             <LogOut className="w-4 h-4" />
           </button>
@@ -72,10 +72,10 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
       </div>
 
       {showInvite && (
-        <div className="mb-4 p-3 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border border-purple-100">
-          <p className="text-sm text-purple-800 mb-2">Share this code to invite members:</p>
+        <div className="mb-4 p-3 bg-gradient-to-r from-accent-100 to-accent-50 rounded-xl border border-accent-200">
+          <p className="text-sm text-primary-600 mb-2">Share this code to invite members:</p>
           <div className="flex items-center gap-2">
-            <div className="flex-1 bg-white rounded-lg px-3 py-2 font-mono text-lg tracking-widest text-center text-purple-700 border border-purple-200">
+            <div className="flex-1 bg-surface-card rounded-lg px-3 py-2 font-mono text-lg tracking-widest text-center text-primary-500 border border-accent-200">
               {group.inviteCode}
             </div>
             <button
@@ -83,8 +83,8 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
               className={`
                 p-2 rounded-lg transition-colors
                 ${copied
-                  ? 'bg-green-500 text-white'
-                  : 'bg-white border border-purple-200 text-purple-600 hover:bg-purple-50'
+                  ? 'bg-primary-500 text-white'
+                  : 'bg-surface-card border border-accent-200 text-primary-500 hover:bg-accent-100'
                 }
               `}
             >
@@ -92,7 +92,7 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
             </button>
             <button
               onClick={shareInvite}
-              className="p-2 rounded-lg bg-white border border-purple-200 text-purple-600 hover:bg-purple-50"
+              className="p-2 rounded-lg bg-surface-card border border-accent-200 text-primary-500 hover:bg-accent-100"
             >
               <Share2 className="w-5 h-5" />
             </button>
@@ -101,7 +101,7 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
       )}
 
       {group.description && (
-        <p className="text-sm text-gray-500 mb-4">{group.description}</p>
+        <p className="text-sm text-text-muted mb-4">{group.description}</p>
       )}
 
       <div className="space-y-2">
@@ -116,8 +116,8 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
         ))}
       </div>
 
-      <div className="mt-4 pt-4 border-t border-gray-100">
-        <p className="text-xs text-gray-400 text-center">
+      <div className="mt-4 pt-4 border-t border-accent-100">
+        <p className="text-xs text-text-light text-center">
           {group.members.length} {group.members.length === 1 ? 'member' : 'members'} •
           Created {new Date(group.createdAt).toLocaleDateString()}
         </p>

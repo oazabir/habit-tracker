@@ -16,10 +16,10 @@ function AppContent() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-surface flex items-center justify-center">
         <div className="animate-pulse flex flex-col items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-emerald-500" />
-          <div className="text-emerald-600 font-semibold">Loading...</div>
+          <div className="w-16 h-16 rounded-full bg-primary-500" />
+          <div className="text-primary-600 font-semibold">Loading...</div>
         </div>
       </div>
     );
@@ -37,13 +37,13 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-surface pb-20">
       {/* Header */}
-      <header className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-6 pt-safe">
+      <header className="bg-gradient-to-r from-primary-500 to-primary-600 text-white px-4 py-6 pt-safe">
         <div className="max-w-lg mx-auto flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold">Jannah Points</h1>
-            <p className="text-emerald-100 text-sm">Your daily spiritual companion</p>
+            <p className="text-primary-100 text-sm">Your daily spiritual companion</p>
           </div>
           <div className="text-3xl">🌙</div>
         </div>

@@ -48,7 +48,7 @@ export function Onboarding({ onComplete }: OnboardingProps) {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-500 to-emerald-700 flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-gradient-to-b from-primary-500 to-primary-700 flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-sm">
         {/* Progress dots */}
         <div className="flex justify-center gap-2 mb-8">
@@ -63,28 +63,28 @@ export function Onboarding({ onComplete }: OnboardingProps) {
         </div>
 
         {/* Content card */}
-        <div className="bg-white rounded-3xl p-8 shadow-2xl">
+        <div className="bg-surface-card rounded-3xl p-8 shadow-2xl">
           {step < steps.length - 1 ? (
             <>
               {/* Icon and emoji */}
               <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-emerald-100 to-emerald-200 mb-4">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent-100 to-accent-200 mb-4">
                   <span className="text-4xl">{currentStep.emoji}</span>
                 </div>
               </div>
 
               {/* Title and description */}
-              <h1 className="text-2xl font-bold text-gray-800 text-center mb-3">
+              <h1 className="text-2xl font-bold text-text-primary text-center mb-3">
                 {currentStep.title}
               </h1>
-              <p className="text-gray-600 text-center mb-8">
+              <p className="text-text-secondary text-center mb-8">
                 {currentStep.description}
               </p>
 
               {/* Next button */}
               <button
                 onClick={handleNext}
-                className="w-full py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/30"
+                className="w-full py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
               >
                 Continue
                 <ChevronRight className="w-5 h-5" />
@@ -94,15 +94,15 @@ export function Onboarding({ onComplete }: OnboardingProps) {
             <>
               {/* Final step - name input */}
               <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-100 to-purple-200 mb-4">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent-100 to-accent-200 mb-4">
                   <span className="text-4xl">👋</span>
                 </div>
               </div>
 
-              <h1 className="text-2xl font-bold text-gray-800 text-center mb-3">
+              <h1 className="text-2xl font-bold text-text-primary text-center mb-3">
                 What's your name?
               </h1>
-              <p className="text-gray-600 text-center mb-6">
+              <p className="text-text-secondary text-center mb-6">
                 Let's personalize your experience
               </p>
 
@@ -112,7 +112,7 @@ export function Onboarding({ onComplete }: OnboardingProps) {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Enter your name"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition-all mb-4"
+                  className="w-full px-4 py-3 border border-surface-muted rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all mb-4 bg-surface"
                   required
                 />
                 <button
@@ -120,8 +120,8 @@ export function Onboarding({ onComplete }: OnboardingProps) {
                   disabled={!name.trim()}
                   className={`w-full py-4 rounded-xl font-semibold transition-all ${
                     name.trim()
-                      ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg shadow-purple-500/30'
-                      : 'bg-gray-100 text-gray-400'
+                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
+                      : 'bg-surface-muted text-text-light'
                   }`}
                 >
                   Get Started

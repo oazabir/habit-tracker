@@ -15,7 +15,7 @@
   }
 
   body {
-    @apply m-0 bg-gray-50 text-gray-900;
+    @apply m-0 bg-surface text-text-primary;
     min-height: 100vh;
     min-height: 100dvh;
   }
@@ -63,14 +63,14 @@
 
   @keyframes glow {
     0%, 100% {
-      box-shadow: 0 0 5px rgba(168, 85, 247, 0.4),
-                  0 0 10px rgba(168, 85, 247, 0.3),
-                  0 0 15px rgba(168, 85, 247, 0.2);
+      box-shadow: 0 0 5px rgba(58, 90, 64, 0.4),
+                  0 0 10px rgba(58, 90, 64, 0.3),
+                  0 0 15px rgba(58, 90, 64, 0.2);
     }
     50% {
-      box-shadow: 0 0 10px rgba(168, 85, 247, 0.6),
-                  0 0 20px rgba(168, 85, 247, 0.5),
-                  0 0 30px rgba(168, 85, 247, 0.3);
+      box-shadow: 0 0 10px rgba(58, 90, 64, 0.6),
+                  0 0 20px rgba(58, 90, 64, 0.5),
+                  0 0 30px rgba(58, 90, 64, 0.3);
     }
   }
 
@@ -83,7 +83,7 @@
     0%, 100% {
       opacity: 1;
     }
-  50% {
+    50% {
       opacity: 0.7;
     }
   }
@@ -113,35 +113,35 @@
 @layer components {
   /* Custom button styles */
   .btn-primary {
-    @apply w-full py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold
-           rounded-xl shadow-lg shadow-emerald-500/30 hover:shadow-xl
+    @apply w-full py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold
+           rounded-xl shadow-lg shadow-primary-500/30 hover:shadow-xl
            active:scale-[0.98] transition-all duration-200 touch-manipulation;
   }
 
   .btn-secondary {
-    @apply w-full py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl
-           hover:bg-gray-200 active:bg-gray-300 active:scale-[0.98]
+    @apply w-full py-3 bg-surface-muted text-text-primary font-semibold rounded-xl
+           hover:bg-surface-card active:bg-surface active:scale-[0.98]
            transition-all duration-200 touch-manipulation;
   }
 
   /* Card styles */
   .card {
-    @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-4;
+    @apply bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4;
   }
 
   .card-header {
-    @apply text-lg font-bold text-gray-800 mb-1;
+    @apply text-lg font-bold text-text-primary mb-1;
   }
 
   .card-subtitle {
-    @apply text-sm text-gray-500;
+    @apply text-sm text-text-muted;
   }
 
   /* Input styles */
   .input {
-    @apply w-full px-4 py-3 border border-gray-200 rounded-xl
-           focus:ring-2 focus:ring-emerald-500 focus:border-transparent
-           outline-none transition-all;
+    @apply w-full px-4 py-3 border border-surface-muted rounded-xl
+           focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           outline-none transition-all bg-surface-card;
   }
 
   /* Badge styles */
@@ -150,7 +150,7 @@
   }
 
   .badge-success {
-    @apply bg-emerald-100 text-emerald-700;
+    @apply bg-accent-100 text-primary-600;
   }
 
   .badge-warning {
@@ -188,5 +188,5 @@ html {
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  @apply outline-2 outline-offset-2 outline-emerald-500;
+  @apply outline-2 outline-offset-2 outline-primary-500;
 }

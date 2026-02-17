@@ -17,11 +17,11 @@ function CircularProgress({ score, size = 40, strokeWidth = 3 }: { score: number
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
   const getScoreColor = () => {
-    if (score >= 90) return { stroke: '#10b981', text: 'text-emerald-600' };
-    if (score >= 75) return { stroke: '#22c55e', text: 'text-green-600' };
-    if (score >= 50) return { stroke: '#eab308', text: 'text-yellow-600' };
+    if (score >= 90) return { stroke: '#3a5a40', text: 'text-primary-500' };
+    if (score >= 75) return { stroke: '#5a9a5a', text: 'text-primary-400' };
+    if (score >= 50) return { stroke: '#eab308', text: 'text-amber-500' };
     if (score >= 25) return { stroke: '#fb923c', text: 'text-orange-500' };
-    return { stroke: '#d1d5db', text: 'text-gray-400' };
+    return { stroke: '#d1d5db', text: 'text-text-light' };
   };
 
   const colors = getScoreColor();
@@ -33,7 +33,7 @@ function CircularProgress({ score, size = 40, strokeWidth = 3 }: { score: number
           cx={size / 2}
           cy={size / 2}
           r={radius}
-          stroke="#e5e7eb"
+          stroke="#E8E4DE"
           strokeWidth={strokeWidth}
           fill="none"
         />
@@ -93,24 +93,24 @@ export function WeekView({
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4">
       <div className="flex items-center justify-between mb-4">
         <button
           onClick={() => onWeekChange(weekOffset - 1)}
-          className="p-2 rounded-full hover:bg-gray-100 active:scale-95 touch-manipulation"
+          className="p-2 rounded-full hover:bg-surface-muted active:scale-95 touch-manipulation"
         >
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
+          <ChevronLeft className="w-5 h-5 text-text-secondary" />
         </button>
 
-        <h3 className="font-semibold text-gray-800">
+        <h3 className="font-semibold text-text-primary">
           {formatWeekRange(weekStart)}
         </h3>
 
         <button
           onClick={() => onWeekChange(weekOffset + 1)}
-          className="p-2 rounded-full hover:bg-gray-100 active:scale-95 touch-manipulation"
+          className="p-2 rounded-full hover:bg-surface-muted active:scale-95 touch-manipulation"
         >
-          <ChevronRight className="w-5 h-5 text-gray-600" />
+          <ChevronRight className="w-5 h-5 text-text-secondary" />
         </button>
       </div>
 
@@ -128,21 +128,21 @@ export function WeekView({
                 flex flex-col items-center p-2 rounded-xl transition-all duration-200
                 touch-manipulation active:scale-95
                 ${selectedFlag
-                  ? 'bg-emerald-500 shadow-md'
+                  ? 'bg-primary-500 shadow-md'
                   : todayFlag
-                    ? 'bg-emerald-50 ring-2 ring-emerald-200'
-                    : 'hover:bg-gray-50'
+                    ? 'bg-accent-100 ring-2 ring-primary-300'
+                    : 'hover:bg-surface-muted'
                 }
               `}
             >
-              <span className={`text-xs font-medium mb-1 ${selectedFlag ? 'text-emerald-100' : 'text-gray-500'}`}>
+              <span className={`text-xs font-medium mb-1 ${selectedFlag ? 'text-primary-100' : 'text-text-muted'}`}>
                 {getDayName(day)}
               </span>
-              <span className={`text-sm font-bold mb-1 ${selectedFlag ? 'text-white' : 'text-gray-800'}`}>
+              <span className={`text-sm font-bold mb-1 ${selectedFlag ? 'text-white' : 'text-text-primary'}`}>
                 {getDayNumber(day)}
               </span>
               {getDayComplete(day) ? (
-                <div className="w-9 h-9 rounded-full bg-emerald-500 flex items-center justify-center">
+                <div className="w-9 h-9 rounded-full bg-primary-500 flex items-center justify-center">
                   <Check className="w-5 h-5 text-white" strokeWidth={3} />
                 </div>
               ) : (

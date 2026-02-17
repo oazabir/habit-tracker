@@ -33,21 +33,21 @@ export function GroupMemberCard({
   };
 
   const getScoreColor = (score: number) => {
-    if (score >= 90) return 'from-emerald-400 to-emerald-600';
-    if (score >= 75) return 'from-green-400 to-green-600';
-    if (score >= 50) return 'from-yellow-400 to-yellow-600';
+    if (score >= 90) return 'from-primary-400 to-primary-600';
+    if (score >= 75) return 'from-accent-400 to-accent-600';
+    if (score >= 50) return 'from-amber-400 to-amber-600';
     if (score >= 25) return 'from-orange-400 to-orange-600';
-    return 'from-gray-300 to-gray-400';
+    return 'from-text-light to-text-muted';
   };
 
   return (
-    <div className="bg-white rounded-xl border border-gray-100 p-3 flex items-center gap-3">
+    <div className="bg-surface-muted rounded-xl border border-accent-100 p-3 flex items-center gap-3">
       {/* Avatar */}
       <div className="relative">
         <div
           className={`
             w-12 h-12 rounded-full flex items-center justify-center
-            bg-gradient-to-br ${isCurrentUser ? 'from-emerald-400 to-emerald-600' : 'from-blue-400 to-blue-600'}
+            bg-gradient-to-br ${isCurrentUser ? 'from-primary-400 to-primary-600' : 'from-accent-400 to-accent-600'}
             text-white font-semibold text-sm
           `}
         >
@@ -71,14 +71,14 @@ export function GroupMemberCard({
       {/* Info */}
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <h4 className="font-semibold text-gray-800 truncate">{member.name}</h4>
+          <h4 className="font-semibold text-text-primary truncate">{member.name}</h4>
           {isCurrentUser && (
-            <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full">
+            <span className="text-xs bg-accent-100 text-primary-600 px-2 py-0.5 rounded-full">
               You
             </span>
           )}
         </div>
-        <p className="text-xs text-gray-500 flex items-center gap-1">
+        <p className="text-xs text-text-muted flex items-center gap-1">
           <Clock className="w-3 h-3" />
           Joined {new Date(member.joinedAt).toLocaleDateString()}
         </p>
@@ -96,7 +96,7 @@ export function GroupMemberCard({
           {todayScore}
           {todayScore >= 50 && <Check className="w-3 h-3" />}
         </div>
-        <p className="text-xs text-gray-400 mt-1">today</p>
+        <p className="text-xs text-text-light mt-1">today</p>
       </div>
     </div>
   );

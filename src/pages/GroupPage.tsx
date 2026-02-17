@@ -42,27 +42,27 @@ export function GroupPage() {
   if (groups.length === 0) {
     return (
       <div className="space-y-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-          <h1 className="text-xl font-bold text-gray-800 mb-1">Groups</h1>
-          <p className="text-sm text-gray-500">Connect with family and friends</p>
+        <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4">
+          <h1 className="text-xl font-bold text-text-primary mb-1">Groups</h1>
+          <p className="text-sm text-text-muted">Connect with family and friends</p>
         </div>
 
         {/* Empty State */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 text-center">
-          <div className="w-20 h-20 rounded-full bg-purple-100 flex items-center justify-center mx-auto mb-4">
-            <Users className="w-10 h-10 text-purple-600" />
+        <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-8 text-center">
+          <div className="w-20 h-20 rounded-full bg-accent-100 flex items-center justify-center mx-auto mb-4">
+            <Users className="w-10 h-10 text-primary-600" />
           </div>
-          <h2 className="text-lg font-semibold text-gray-800 mb-2">
+          <h2 className="text-lg font-semibold text-text-primary mb-2">
             Grow Together
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-text-secondary mb-6">
             Create a group with family and friends to track your habits together and keep each other motivated!
           </p>
 
           <div className="space-y-3">
             <button
               onClick={() => setShowCreateModal(true)}
-              className="w-full py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-purple-500/30"
+              className="w-full py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
             >
               <PlusCircle className="w-5 h-5" />
               Create a Group
@@ -70,7 +70,7 @@ export function GroupPage() {
 
             <button
               onClick={() => setShowJoinModal(true)}
-              className="w-full py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-gray-200 transition-colors"
+              className="w-full py-3 bg-surface-muted text-text-primary font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-accent-100 transition-colors"
             >
               <LogIn className="w-5 h-5" />
               Join with Code
@@ -79,9 +79,9 @@ export function GroupPage() {
         </div>
 
         {/* Feature Highlights */}
-        <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl p-4 border border-purple-100">
-          <h3 className="font-semibold text-purple-800 mb-3">Why join a group?</h3>
-          <ul className="space-y-2 text-sm text-purple-700">
+        <div className="bg-gradient-to-br from-accent-100 to-accent-50 rounded-2xl p-4 border border-accent-200">
+          <h3 className="font-semibold text-primary-600 mb-3">Why join a group?</h3>
+          <ul className="space-y-2 text-sm text-primary-500">
             <li className="flex items-center gap-2">
               <span>✨</span>
               <span>Stay accountable with loved ones</span>
@@ -115,14 +115,14 @@ export function GroupPage() {
   // User has groups
   return (
     <div className="space-y-4">
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
-        <h1 className="text-xl font-bold text-gray-800 mb-1">Groups</h1>
-        <p className="text-sm text-gray-500">Track progress with your community</p>
+      <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4">
+        <h1 className="text-xl font-bold text-text-primary mb-1">Groups</h1>
+        <p className="text-sm text-text-muted">Track progress with your community</p>
       </div>
 
       {/* Group Selector */}
       {groups.length > 1 && (
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-2">
+        <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-2">
           <div className="flex gap-2 overflow-x-auto pb-2">
             {groups.map((group) => (
               <button
@@ -131,8 +131,8 @@ export function GroupPage() {
                 className={`
                   flex-shrink-0 px-4 py-2 rounded-xl font-medium transition-all
                   ${group.id === currentGroupId
-                    ? 'bg-purple-500 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'bg-primary-500 text-white'
+                    : 'bg-surface-muted text-text-secondary hover:bg-accent-100'
                   }
                 `}
               >
@@ -157,7 +157,7 @@ export function GroupPage() {
       <div className="flex gap-3">
         <button
           onClick={() => setShowCreateModal(true)}
-          className="flex-1 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-gray-200 transition-colors"
+          className="flex-1 py-3 bg-surface-muted text-text-primary font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-accent-100 transition-colors"
         >
           <PlusCircle className="w-5 h-5" />
           New Group
@@ -165,7 +165,7 @@ export function GroupPage() {
 
         <button
           onClick={() => setShowJoinModal(true)}
-          className="flex-1 py-3 bg-gray-100 text-gray-700 font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-gray-200 transition-colors"
+          className="flex-1 py-3 bg-surface-muted text-text-primary font-semibold rounded-xl flex items-center justify-center gap-2 hover:bg-accent-100 transition-colors"
         >
           <LogIn className="w-5 h-5" />
           Join Group

@@ -8,28 +8,39 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
+          50: '#f0f7f0',
+          100: '#dcebdc',
+          200: '#bbd7bb',
+          300: '#8fb88f',
+          400: '#5a9a5a',
+          500: '#3a5a40',  // Main primary dark green
+          600: '#2d4a33',
+          700: '#243a29',
+          800: '#1e2f22',
+          900: '#1a261d',
         },
         accent: {
-          50: '#faf5ff',
-          100: '#f3e8ff',
-          200: '#e9d5ff',
-          300: '#d8b4fe',
-          400: '#c084fc',
-          500: '#a855f7',
-          600: '#9333ea',
-          700: '#7e22ce',
-          800: '#6b21a8',
-          900: '#581c87',
+          50: '#f8faf5',
+          100: '#e8f3e8',  // Light sage green for cards
+          200: '#d4e8d4',
+          300: '#b5d6b5',
+          400: '#8fbc8f',
+          500: '#6a9f6a',
+          600: '#4d8150',
+          700: '#3d6740',
+          800: '#345438',
+          900: '#2d4630',
+        },
+        surface: {
+          DEFAULT: '#F8F5F0',  // Warm off-white background
+          card: '#ffffff',
+          muted: '#E8E4DE',
+        },
+        text: {
+          primary: '#1a1a1a',
+          secondary: '#4a4a4a',
+          muted: '#6b6b6b',
+          light: '#9a9a9a',
         }
       },
       fontFamily: {

@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite & echo $! > .pid; wait",
+    "stop": "kill $(cat .pid) 2>/dev/null; rm -f .pid",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"

@@ -46,7 +46,7 @@ export function DailyPage() {
 
       {/* Prayers Section */}
       <div className="space-y-2">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
+        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider px-1">
           🕌 Daily Prayers
         </h2>
         {prayers.map(prayer => (
@@ -61,7 +61,7 @@ export function DailyPage() {
 
       {/* Quran Section */}
       <div className="space-y-2">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
+        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider px-1">
           📖 Quran Reading
         </h2>
         {quranHabit && (
@@ -74,7 +74,7 @@ export function DailyPage() {
 
       {/* Dua Section */}
       <div className="space-y-2">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider px-1">
+        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider px-1">
           🤲 Dua & Remembrance
         </h2>
         {duaHabit && (
@@ -86,11 +86,11 @@ export function DailyPage() {
       </div>
 
       {/* Motivational Footer */}
-      <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-4 text-center border border-emerald-100">
-        <p className="text-emerald-800 font-medium">
+      <div className="bg-gradient-to-r from-accent-100 to-accent-50 rounded-2xl p-4 text-center border border-accent-200">
+        <p className="text-primary-600 font-medium">
           "The most beloved deeds to Allah are those done consistently, even if small."
         </p>
-        <p className="text-emerald-600 text-sm mt-1">— Sahih Bukhari</p>
+        <p className="text-primary-500 text-sm mt-1">— Sahih Bukhari</p>
       </div>
     </div>
   );

@@ -77,21 +77,21 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
   }) => (
     <div
       className={`flex items-center justify-between p-4 rounded-xl transition-all ${
-        checked ? 'bg-emerald-50 border-2 border-emerald-200' : 'bg-gray-50 border-2 border-transparent'
+        checked ? 'bg-accent-100 border-2 border-primary-300' : 'bg-surface-muted border-2 border-transparent'
       }`}
     >
       <div className="flex items-center gap-3">
         <div
           onClick={onToggle}
           className={`w-6 h-6 rounded-md flex items-center justify-center transition-all cursor-pointer ${
-            checked ? 'bg-emerald-500' : 'border-2 border-gray-300'
+            checked ? 'bg-primary-500' : 'border-2 border-text-light'
           }`}
         >
           {checked && <Check className="w-4 h-4 text-white" strokeWidth={3} />}
         </div>
         <span
           onClick={onToggle}
-          className={`font-medium cursor-pointer ${checked ? 'text-emerald-700' : 'text-gray-700'}`}
+          className={`font-medium cursor-pointer ${checked ? 'text-primary-600' : 'text-text-secondary'}`}
         >
           {label}
         </span>
@@ -100,7 +100,7 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
       {hasInfo && (
         <button
           onClick={onInfoClick}
-          className="relative p-2 rounded-full bg-gradient-to-r from-purple-500 to-purple-600 text-white animate-glow touch-manipulation"
+          className="relative p-2 rounded-full bg-gradient-to-r from-primary-500 to-primary-600 text-white animate-glow touch-manipulation"
         >
           <Info className="w-5 h-5" />
         </button>
@@ -116,23 +116,23 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
         onClick={onClose}
       >
         <div
-          className="bg-white w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[80vh] overflow-y-auto"
+          className="bg-surface-card w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[80vh] overflow-y-auto"
           onClick={(e) => e.stopPropagation()}
         >
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <span className="text-2xl">{getPrayerIcon()}</span>
-              <h2 className="text-lg font-semibold text-gray-800">{habit.name}</h2>
+              <h2 className="text-lg font-semibold text-text-primary">{habit.name}</h2>
             </div>
             <button
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-full hover:bg-surface-muted transition-colors"
             >
-              <X className="w-5 h-5 text-gray-500" />
+              <X className="w-5 h-5 text-text-muted" />
             </button>
           </div>
 
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-text-muted mb-4">
             Add details about your prayer
           </p>
 
@@ -157,7 +157,7 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
               checked={details.recitedAyatulKursi}
               onToggle={() => toggleDetail('recitedAyatulKursi')}
               label="Recited Ayatul Kursi"
-              icon={<BookOpen className="w-5 h-5 text-blue-600 ml-2" />}
+              icon={<BookOpen className="w-5 h-5 text-primary-600 ml-2" />}
               hasInfo
               onInfoClick={() => setShowAyatulKursiInfo(true)}
             />
@@ -165,7 +165,7 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
 
           <button
             onClick={onClose}
-            className="w-full mt-6 py-3 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl shadow-lg shadow-emerald-500/30"
+            className="w-full mt-6 py-3 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl shadow-lg shadow-primary-500/30"
           >
             Done
           </button>
@@ -179,33 +179,33 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
           onClick={() => setShowAdhkarInfo(false)}
         >
           <div
-            className="bg-white w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[85vh] overflow-y-auto"
+            className="bg-surface-card w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
                 <span className="text-2xl">🤲</span>
-                <h3 className="text-lg font-semibold text-gray-800">Post-Prayer Adhkar</h3>
+                <h3 className="text-lg font-semibold text-text-primary">Post-Prayer Adhkar</h3>
               </div>
               <button
                 onClick={() => setShowAdhkarInfo(false)}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                className="p-2 rounded-full hover:bg-surface-muted transition-colors"
               >
-                <X className="w-5 h-5 text-gray-500" />
+                <X className="w-5 h-5 text-text-muted" />
               </button>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-gray-50 rounded-xl p-4">
-                <p className="text-sm text-gray-500 mb-2">Arabic</p>
-                <p className="font-arabic text-xl leading-loose text-right text-gray-800">
+              <div className="bg-surface-muted rounded-xl p-4">
+                <p className="text-sm text-text-muted mb-2">Arabic</p>
+                <p className="font-arabic text-xl leading-loose text-right text-text-primary">
                   {ADHKAR_TEXT}
                 </p>
               </div>
 
-              <div className="bg-emerald-50 rounded-xl p-4">
-                <p className="text-sm text-emerald-600 mb-2">Translation</p>
-                <p className="text-gray-700 leading-relaxed">
+              <div className="bg-accent-100 rounded-xl p-4">
+                <p className="text-sm text-primary-600 mb-2">Translation</p>
+                <p className="text-text-secondary leading-relaxed">
                   {ADHKAR_TRANSLATION}
                 </p>
               </div>
@@ -213,7 +213,7 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
 
             <button
               onClick={() => setShowAdhkarInfo(false)}
-              className="w-full mt-6 py-3 bg-emerald-100 text-emerald-700 font-semibold rounded-xl"
+              className="w-full mt-6 py-3 bg-accent-100 text-primary-600 font-semibold rounded-xl"
             >
               Close
             </button>
@@ -228,33 +228,33 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
           onClick={() => setShowAyatulKursiInfo(false)}
         >
           <div
-            className="bg-white w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[85vh] overflow-y-auto"
+            className="bg-surface-card w-full sm:w-96 sm:rounded-2xl rounded-t-2xl p-6 animate-slide-up max-h-[85vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-blue-600" />
-                <h3 className="text-lg font-semibold text-gray-800">Ayatul Kursi</h3>
+                <BookOpen className="w-6 h-6 text-primary-600" />
+                <h3 className="text-lg font-semibold text-text-primary">Ayatul Kursi</h3>
               </div>
               <button
                 onClick={() => setShowAyatulKursiInfo(false)}
-                className="p-2 rounded-full hover:bg-gray-100 transition-colors"
+                className="p-2 rounded-full hover:bg-surface-muted transition-colors"
               >
-                <X className="w-5 h-5 text-gray-500" />
+                <X className="w-5 h-5 text-text-muted" />
               </button>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-blue-50 rounded-xl p-4">
-                <p className="text-sm text-blue-600 mb-2">Arabic (Surah Al-Baqarah 2:255)</p>
-                <p className="font-arabic text-xl leading-loose text-right text-gray-800">
+              <div className="bg-accent-100 rounded-xl p-4">
+                <p className="text-sm text-primary-600 mb-2">Arabic (Surah Al-Baqarah 2:255)</p>
+                <p className="font-arabic text-xl leading-loose text-right text-text-primary">
                   {AYATUL_KURSI_ARABIC}
                 </p>
               </div>
 
-              <div className="bg-emerald-50 rounded-xl p-4">
-                <p className="text-sm text-emerald-600 mb-2">Translation</p>
-                <p className="text-gray-700 leading-relaxed">
+              <div className="bg-accent-50 rounded-xl p-4">
+                <p className="text-sm text-primary-500 mb-2">Translation</p>
+                <p className="text-text-secondary leading-relaxed">
                   {AYATUL_KURSI_TRANSLATION}
                 </p>
               </div>
@@ -262,7 +262,7 @@ export function PrayerDetailSheet({ habit, isOpen, onClose, onUpdate }: PrayerDe
 
             <button
               onClick={() => setShowAyatulKursiInfo(false)}
-              className="w-full mt-6 py-3 bg-blue-100 text-blue-700 font-semibold rounded-xl"
+              className="w-full mt-6 py-3 bg-accent-100 text-primary-600 font-semibold rounded-xl"
             >
               Close
             </button>

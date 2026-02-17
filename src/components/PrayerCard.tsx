@@ -68,8 +68,8 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
           flex flex-col items-start gap-2
           active:scale-95 touch-manipulation
           ${habit.completed
-            ? 'bg-gradient-to-r from-emerald-500 to-emerald-600 border-emerald-500 shadow-lg shadow-emerald-500/30'
-            : 'bg-white border-gray-200 hover:border-emerald-300 hover:shadow-md'
+            ? 'bg-gradient-to-r from-primary-500 to-primary-600 border-primary-500 shadow-lg shadow-primary-500/30'
+            : 'bg-surface-card border-accent-200 hover:border-primary-400 hover:shadow-md'
           }
         `}
       >
@@ -77,10 +77,10 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
           <div className="flex items-center gap-3">
             <span className="text-2xl">{getPrayerIcon()}</span>
             <div className="text-left">
-              <h3 className={`font-semibold ${habit.completed ? 'text-white' : 'text-gray-800'}`}>
+              <h3 className={`font-semibold ${habit.completed ? 'text-white' : 'text-text-primary'}`}>
                 {habit.name}
               </h3>
-              <p className={`text-sm ${habit.completed ? 'text-emerald-100' : 'text-gray-500'}`}>
+              <p className={`text-sm ${habit.completed ? 'text-primary-100' : 'text-text-muted'}`}>
                 {habit.completed ? 'Tap to add details' : 'Tap to mark'}
               </p>
             </div>
@@ -92,7 +92,7 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
               transition-all duration-300 cursor-pointer
               ${habit.completed
                 ? 'bg-white/20 hover:bg-white/30 active:scale-90'
-                : 'bg-gray-100'
+                : 'bg-accent-100'
               }
             `}
           >

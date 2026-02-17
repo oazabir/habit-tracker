@@ -22,8 +22,8 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
       className={`
         p-4 rounded-2xl border-2 transition-all duration-300
         ${pages > 0
-          ? 'bg-gradient-to-r from-blue-500 to-blue-600 border-blue-500 shadow-lg shadow-blue-500/30'
-          : 'bg-white border-gray-200'
+          ? 'bg-gradient-to-r from-primary-500 to-primary-600 border-primary-500 shadow-lg shadow-primary-500/30'
+          : 'bg-surface-card border-accent-200'
         }
       `}
     >
@@ -31,10 +31,10 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
         <div className="flex items-center gap-3">
           <span className="text-2xl">📖</span>
           <div>
-            <h3 className={`font-semibold ${pages > 0 ? 'text-white' : 'text-gray-800'}`}>
+            <h3 className={`font-semibold ${pages > 0 ? 'text-white' : 'text-text-primary'}`}>
               Quran Reading
             </h3>
-            <p className={`text-sm ${pages > 0 ? 'text-blue-100' : 'text-gray-500'}`}>
+            <p className={`text-sm ${pages > 0 ? 'text-primary-100' : 'text-text-muted'}`}>
               Track your daily pages
             </p>
           </div>
@@ -54,7 +54,7 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
             transition-all duration-200 active:scale-90 touch-manipulation
             ${pages > 0
               ? 'bg-white/20 text-white hover:bg-white/30'
-              : 'bg-gray-100 text-gray-400'
+              : 'bg-accent-100 text-text-light'
             }
           `}
         >
@@ -62,10 +62,10 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
         </button>
 
         <div className="text-center min-w-[80px]">
-          <div className={`text-4xl font-bold ${pages > 0 ? 'text-white' : 'text-gray-800'}`}>
+          <div className={`text-4xl font-bold ${pages > 0 ? 'text-white' : 'text-text-primary'}`}>
             {pages}
           </div>
-          <div className={`text-sm ${pages > 0 ? 'text-blue-100' : 'text-gray-500'}`}>
+          <div className={`text-sm ${pages > 0 ? 'text-primary-100' : 'text-text-muted'}`}>
             {pages === 1 ? 'page' : 'pages'}
           </div>
         </div>
@@ -77,7 +77,7 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
             transition-all duration-200 active:scale-90 touch-manipulation
             ${pages > 0
               ? 'bg-white/20 text-white hover:bg-white/30'
-              : 'bg-blue-100 text-blue-600 hover:bg-blue-200'
+              : 'bg-primary-100 text-primary-600 hover:bg-primary-200'
             }
           `}
         >
