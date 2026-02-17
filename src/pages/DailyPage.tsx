@@ -34,7 +34,7 @@ export function DailyPage() {
   }, [selectedDate]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {/* Week View */}
       <WeekView
         selectedDate={selectedDate}
@@ -44,39 +44,31 @@ export function DailyPage() {
         onWeekChange={() => {}}
       />
 
-      {/* Prayers Section */}
+      {/* Prayers Section - 2 Column Grid */}
       <div className="space-y-2">
-        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider px-1">
+        <h2 className="text-xs font-semibold text-text-muted uppercase tracking-wider px-1">
           🕌 Daily Prayers
         </h2>
-        {prayers.map(prayer => (
-          <PrayerCard
-            key={prayer.id}
-            habit={prayer}
-            onToggle={() => toggleHabit(prayer.id)}
-            onUpdateDetails={updatePrayerDetails}
-          />
-        ))}
+        <div className="grid grid-cols-2 gap-2">
+          {prayers.map(prayer => (
+            <PrayerCard
+              key={prayer.id}
+              habit={prayer}
+              onToggle={() => toggleHabit(prayer.id)}
+              onUpdateDetails={updatePrayerDetails}
+            />
+          ))}
+        </div>
       </div>
 
-      {/* Quran Section */}
-      <div className="space-y-2">
-        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider px-1">
-          📖 Quran Reading
-        </h2>
+      {/* Quran & Dua Section - Side by Side */}
+      <div className="grid grid-cols-2 gap-2">
         {quranHabit && (
           <QuranCounter
             habit={quranHabit}
             onUpdate={updateQuranPages}
           />
         )}
-      </div>
-
-      {/* Dua Section */}
-      <div className="space-y-2">
-        <h2 className="text-sm font-semibold text-text-muted uppercase tracking-wider px-1">
-          🤲 Dua & Remembrance
-        </h2>
         {duaHabit && (
           <DuaCounter
             habit={duaHabit}
@@ -86,11 +78,11 @@ export function DailyPage() {
       </div>
 
       {/* Motivational Footer */}
-      <div className="bg-gradient-to-r from-accent-100 to-accent-50 rounded-2xl p-4 text-center border border-accent-200">
-        <p className="text-primary-600 font-medium">
+      <div className="bg-gradient-to-r from-accent-100 to-accent-50 rounded-xl p-3 text-center border border-accent-200">
+        <p className="text-primary-600 text-sm font-medium">
           "The most beloved deeds to Allah are those done consistently, even if small."
         </p>
-        <p className="text-primary-500 text-sm mt-1">— Sahih Bukhari</p>
+        <p className="text-primary-500 text-xs mt-1">— Sahih Bukhari</p>
       </div>
     </div>
   );

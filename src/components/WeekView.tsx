@@ -11,7 +11,7 @@ interface WeekViewProps {
   onWeekChange: (offset: number) => void;
 }
 
-function CircularProgress({ score, size = 40, strokeWidth = 3 }: { score: number; size?: number; strokeWidth?: number }) {
+function CircularProgress({ score, size = 28, strokeWidth = 2 }: { score: number; size?: number; strokeWidth?: number }) {
   const radius = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = circumference - (score / 100) * circumference;
@@ -53,7 +53,7 @@ function CircularProgress({ score, size = 40, strokeWidth = 3 }: { score: number
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <span className={`text-xs font-bold ${colors.text}`}>{score}</span>
+        <span className={`text-[10px] font-bold ${colors.text}`}>{score}</span>
       </div>
     </div>
   );
@@ -93,28 +93,28 @@ export function WeekView({
   };
 
   return (
-    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4">
-      <div className="flex items-center justify-between mb-4">
+    <div className="bg-surface-card rounded-xl shadow-sm border border-accent-100 p-2 mb-3">
+      <div className="flex items-center justify-between mb-2">
         <button
           onClick={() => onWeekChange(weekOffset - 1)}
-          className="p-2 rounded-full hover:bg-surface-muted active:scale-95 touch-manipulation"
+          className="p-1 rounded-full hover:bg-surface-muted active:scale-95 touch-manipulation"
         >
-          <ChevronLeft className="w-5 h-5 text-text-secondary" />
+          <ChevronLeft className="w-4 h-4 text-text-secondary" />
         </button>
 
-        <h3 className="font-semibold text-text-primary">
+        <h3 className="text-sm font-semibold text-text-primary">
           {formatWeekRange(weekStart)}
         </h3>
 
         <button
           onClick={() => onWeekChange(weekOffset + 1)}
-          className="p-2 rounded-full hover:bg-surface-muted active:scale-95 touch-manipulation"
+          className="p-1 rounded-full hover:bg-surface-muted active:scale-95 touch-manipulation"
         >
-          <ChevronRight className="w-5 h-5 text-text-secondary" />
+          <ChevronRight className="w-4 h-4 text-text-secondary" />
         </button>
       </div>
 
-      <div className="grid grid-cols-7 gap-2">
+      <div className="grid grid-cols-7 gap-1">
         {weekDays.map((day) => {
           const score = getDayScore(day);
           const todayFlag = isToday(day);
@@ -125,7 +125,7 @@ export function WeekView({
               key={formatDate(day)}
               onClick={() => onSelectDate(formatDate(day))}
               className={`
-                flex flex-col items-center p-2 rounded-xl transition-all duration-200
+                flex flex-col items-center p-1 rounded-lg transition-all duration-200
                 touch-manipulation active:scale-95
                 ${selectedFlag
                   ? 'bg-primary-500 shadow-md'
@@ -135,21 +135,21 @@ export function WeekView({
                 }
               `}
             >
-              <span className={`text-xs font-medium mb-1 ${selectedFlag ? 'text-primary-100' : 'text-text-muted'}`}>
+              <span className={`text-[10px] font-medium ${selectedFlag ? 'text-primary-100' : 'text-text-muted'}`}>
                 {getDayName(day)}
               </span>
-              <span className={`text-sm font-bold mb-1 ${selectedFlag ? 'text-white' : 'text-text-primary'}`}>
+              <span className={`text-xs font-bold ${selectedFlag ? 'text-white' : 'text-text-primary'}`}>
                 {getDayNumber(day)}
               </span>
               {getDayComplete(day) ? (
-                <div className="w-9 h-9 rounded-full bg-primary-500 flex items-center justify-center">
-                  <Check className="w-5 h-5 text-white" strokeWidth={3} />
+                <div className="w-6 h-6 rounded-full bg-primary-500 flex items-center justify-center">
+                  <Check className="w-3 h-3 text-white" strokeWidth={3} />
                 </div>
               ) : (
                 <CircularProgress
                   score={score}
-                  size={36}
-                  strokeWidth={3}
+                  size={24}
+                  strokeWidth={2}
                 />
               )}
             </button>
