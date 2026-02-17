@@ -1,4 +1,8 @@
 {
-  "setup": [],
-  "teardown": []
+  "setup": [
+    "bun install && bun dev"
+  ],
+  "teardown": [
+    "bun stop"
+  ]
 }

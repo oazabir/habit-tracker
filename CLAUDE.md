@@ -10,6 +10,7 @@ Jannah Points is a mobile-first React daily habit tracker for Islamic spiritual 
 
 ```bash
 bun dev              # Start development server
+bun stop             # Stop development server
 bun run build        # TypeScript compile + Vite build
 bun run lint         # Run ESLint
 bun run preview      # Preview production build
