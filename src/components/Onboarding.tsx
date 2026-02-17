@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { ChevronRight } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface OnboardingProps {
   onComplete: (name: string) => void;
@@ -63,72 +64,88 @@ export function Onboarding({ onComplete }: OnboardingProps) {
         </div>
 
         {/* Content card */}
-        <div className="bg-surface-card rounded-3xl p-8 shadow-2xl">
-          {step < steps.length - 1 ? (
-            <>
-              {/* Icon and emoji */}
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent-100 to-accent-200 mb-4">
-                  <span className="text-4xl">{currentStep.emoji}</span>
-                </div>
-              </div>
-
-              {/* Title and description */}
-              <h1 className="text-2xl font-bold text-text-primary text-center mb-3">
-                {currentStep.title}
-              </h1>
-              <p className="text-text-secondary text-center mb-8">
-                {currentStep.description}
-              </p>
-
-              {/* Next button */}
-              <button
-                onClick={handleNext}
-                className="w-full py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
+        <div className="bg-surface-card rounded-3xl p-8 shadow-2xl overflow-hidden min-h-[400px] flex flex-col justify-center">
+          <AnimatePresence mode="wait">
+            {step < steps.length - 1 ? (
+              <motion.div
+                key={step}
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -50, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center"
               >
-                Continue
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </>
-          ) : (
-            <>
-              {/* Final step - name input */}
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent-100 to-accent-200 mb-4">
-                  <span className="text-4xl">👋</span>
+                {/* Icon and emoji */}
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent-100 to-accent-200 mb-4">
+                    <span className="text-4xl">{currentStep.emoji}</span>
+                  </div>
                 </div>
-              </div>
 
-              <h1 className="text-2xl font-bold text-text-primary text-center mb-3">
-                What's your name?
-              </h1>
-              <p className="text-text-secondary text-center mb-6">
-                Let's personalize your experience
-              </p>
+                {/* Title and description */}
+                <h1 className="text-2xl font-bold text-text-primary text-center mb-3">
+                  {currentStep.title}
+                </h1>
+                <p className="text-text-secondary text-center mb-8">
+                  {currentStep.description}
+                </p>
 
-              <form onSubmit={handleComplete}>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your name"
-                  className="w-full px-4 py-3 border border-surface-muted rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all mb-4 bg-surface"
-                  required
-                />
+                {/* Next button */}
                 <button
-                  type="submit"
-                  disabled={!name.trim()}
-                  className={`w-full py-4 rounded-xl font-semibold transition-all ${
-                    name.trim()
-                      ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
-                      : 'bg-surface-muted text-text-light'
-                  }`}
+                  onClick={handleNext}
+                  className="w-full py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary-500/30"
                 >
-                  Get Started
+                  Continue
+                  <ChevronRight className="w-5 h-5" />
                 </button>
-              </form>
-            </>
-          )}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="final"
+                initial={{ x: 50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: -50, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex flex-col items-center w-full"
+              >
+                {/* Final step - name input */}
+                <div className="text-center mb-6">
+                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-accent-100 to-accent-200 mb-4">
+                    <span className="text-4xl">👋</span>
+                  </div>
+                </div>
+
+                <h1 className="text-2xl font-bold text-text-primary text-center mb-3">
+                  What's your name?
+                </h1>
+                <p className="text-text-secondary text-center mb-6">
+                  Let's personalize your experience
+                </p>
+
+                <form onSubmit={handleComplete} className="w-full">
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your name"
+                    className="w-full px-4 py-3 border border-surface-muted rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all mb-4 bg-surface"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    disabled={!name.trim()}
+                    className={`w-full py-4 rounded-xl font-semibold transition-all ${
+                      name.trim()
+                        ? 'bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg shadow-primary-500/30'
+                        : 'bg-surface-muted text-text-light'
+                    }`}
+                  >
+                    Get Started
+                  </button>
+                </form>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Skip button for early steps */}
