@@ -48,7 +48,7 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
   });
 
   return (
-    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4">
+    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4 animate-fade-in-up">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
           <Users className="w-5 h-5 text-primary-600" />
@@ -57,7 +57,7 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowInvite(!showInvite)}
-            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-accent-100 text-primary-600 rounded-full hover:bg-accent-200 transition-colors"
+            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-accent-100 text-primary-600 rounded-full hover:bg-accent-200 transition-all hover:-translate-y-0.5"
           >
             <UserPlus className="w-4 h-4" />
             Invite
@@ -72,7 +72,7 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
       </div>
 
       {showInvite && (
-        <div className="mb-4 p-3 bg-gradient-to-r from-accent-100 to-accent-50 rounded-xl border border-accent-200">
+        <div className="mb-4 p-3 bg-gradient-to-r from-accent-100 to-accent-50 rounded-xl border border-accent-200 animate-pop-in">
           <p className="text-sm text-primary-600 mb-2">Share this code to invite members:</p>
           <div className="flex items-center gap-2">
             <div className="flex-1 bg-surface-card rounded-lg px-3 py-2 font-mono text-lg tracking-widest text-center text-primary-500 border border-accent-200">
@@ -105,13 +105,14 @@ export function GroupView({ group, tracking, currentUserId, onLeave }: GroupView
       )}
 
       <div className="space-y-2">
-        {sortedMembers.map((member) => (
+        {sortedMembers.map((member, index) => (
           <GroupMemberCard
             key={member.id}
             member={member}
             isCreator={group.createdBy === member.id}
             tracking={member.id === currentUserId ? tracking : undefined}
             isCurrentUser={member.id === currentUserId}
+            animationDelay={`${0.08 * (index + 1)}s`}
           />
         ))}
       </div>

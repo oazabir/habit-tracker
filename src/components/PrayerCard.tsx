@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Check } from 'lucide-react';
 import type { Habit, PrayerDetails } from '../types';
 import { PrayerDetailSheet } from './PrayerDetailSheet';
+import { DuaIcon, PrayerIcon, QuranIcon } from './SvgIcons';
 
 interface PrayerCardProps {
   habit: Habit;
@@ -13,9 +14,7 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
   const [showDetailSheet, setShowDetailSheet] = useState(false);
   const wasCompleted = useRef(habit.completed);
 
-  // Open detail sheet 1 second after marking as completed
   useEffect(() => {
-    // Only trigger if the prayer was just marked as completed (was false, now true)
     if (!wasCompleted.current && habit.completed) {
       const timer = setTimeout(() => {
         setShowDetailSheet(true);
@@ -25,18 +24,6 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
     }
     wasCompleted.current = habit.completed;
   }, [habit.completed]);
-
-  const prayerIcons: Record<string, string> = {
-    fajr: '🌅',
-    dhuhr: '☀️',
-    asr: '🌤️',
-    maghrib: '🌇',
-    isha: '🌙',
-  };
-
-  const getPrayerIcon = () => {
-    return prayerIcons[habit.prayerName || ''] || '🕌';
-  };
 
   const handleCardClick = () => {
     if (!habit.completed) {
@@ -64,9 +51,9 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
       <button
         onClick={handleCardClick}
         className={`
-          w-full p-3 rounded-xl border-2 transition-all duration-300
+          w-full p-3 rounded-xl border-2 transition-all duration-300 animate-fade-in-up
           flex flex-col items-center gap-1
-          active:scale-95 touch-manipulation
+          active:scale-95 touch-manipulation hover:-translate-y-0.5
           ${habit.completed
             ? 'bg-gradient-to-r from-primary-500 to-primary-600 border-primary-500 shadow-lg shadow-primary-500/30'
             : 'bg-surface-card border-accent-200 hover:border-primary-400 hover:shadow-md'
@@ -75,7 +62,9 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
       >
         <div className="flex items-center justify-between w-full">
           <div className="flex items-center gap-2">
-            <span className="text-xl">{getPrayerIcon()}</span>
+            <div className={`${habit.completed ? 'text-white' : 'text-primary-600'} transition-colors`}>
+              <PrayerIcon prayerName={habit.prayerName} className="w-5 h-5" />
+            </div>
             <h3 className={`font-semibold text-sm ${habit.completed ? 'text-white' : 'text-text-primary'}`}>
               {habit.name}
             </h3>
@@ -97,17 +86,16 @@ export function PrayerCard({ habit, onToggle, onUpdateDetails }: PrayerCardProps
           </div>
         </div>
 
-        {/* Sub-items for prayer details - compact */}
         {habit.completed && hasDetails && (
           <div className="flex flex-wrap gap-1 mt-1">
             {details?.prayedInMasjid && (
-              <span className="text-[10px]">🕌</span>
+              <PrayerIcon prayerName={habit.prayerName} className="w-3 h-3 text-white" />
             )}
             {details?.recitedAdhkar && (
-              <span className="text-[10px]">🤲</span>
+              <DuaIcon className="w-3 h-3 text-white" />
             )}
             {details?.recitedAyatulKursi && (
-              <span className="text-[10px]">📖</span>
+              <QuranIcon className="w-3 h-3 text-white" />
             )}
           </div>
         )}

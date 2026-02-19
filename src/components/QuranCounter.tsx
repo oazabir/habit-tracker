@@ -1,5 +1,6 @@
 import { Minus, Plus } from 'lucide-react';
 import type { Habit } from '../types';
+import { QuranIcon } from './SvgIcons';
 
 interface QuranCounterProps {
   habit: Habit;
@@ -20,7 +21,7 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
   return (
     <div
       className={`
-        p-3 rounded-xl border-2 transition-all duration-300
+        p-3 rounded-xl border-2 transition-all duration-300 animate-fade-in-up hover:-translate-y-0.5
         ${pages > 0
           ? 'bg-gradient-to-r from-primary-500 to-primary-600 border-primary-500 shadow-lg shadow-primary-500/30'
           : 'bg-surface-card border-accent-200'
@@ -28,7 +29,7 @@ export function QuranCounter({ habit, onUpdate }: QuranCounterProps) {
       `}
     >
       <div className="flex items-center gap-2 mb-2">
-        <span className="text-xl">📖</span>
+        <QuranIcon className={`w-5 h-5 ${pages > 0 ? 'text-white' : 'text-primary-600'}`} />
         <h3 className={`font-semibold text-sm ${pages > 0 ? 'text-white' : 'text-text-primary'}`}>
           Quran
         </h3>
