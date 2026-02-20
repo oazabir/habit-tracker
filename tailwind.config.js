@@ -44,6 +44,7 @@ export default {
         }
       },
       fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
         arabic: ['Amiri', 'serif'],
       },
     },

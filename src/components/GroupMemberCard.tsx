@@ -8,6 +8,7 @@ interface GroupMemberCardProps {
   isCreator: boolean;
   tracking?: DailyTracking[];
   isCurrentUser?: boolean;
+  animationDelay?: string;
 }
 
 export function GroupMemberCard({
@@ -15,6 +16,7 @@ export function GroupMemberCard({
   isCreator,
   tracking,
   isCurrentUser,
+  animationDelay,
 }: GroupMemberCardProps) {
   const today = formatDate(new Date());
   const todayScore = tracking
@@ -41,7 +43,10 @@ export function GroupMemberCard({
   };
 
   return (
-    <div className="bg-surface-muted rounded-xl border border-accent-100 p-3 flex items-center gap-3">
+    <div
+      className="bg-surface-muted rounded-xl border border-accent-100 p-3 flex items-center gap-3 animate-fade-in-up"
+      style={animationDelay ? { animationDelay } : undefined}
+    >
       {/* Avatar */}
       <div className="relative">
         <div

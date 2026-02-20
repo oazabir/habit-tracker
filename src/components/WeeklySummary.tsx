@@ -1,6 +1,5 @@
 import { TrendingUp, BookOpen, MessageCircle, Target, Flame } from 'lucide-react';
 import type { WeeklyStats } from '../types';
-import { getStreakEmoji } from '../utils/stats';
 
 interface WeeklySummaryProps {
   stats: WeeklyStats;
@@ -43,29 +42,30 @@ export function WeeklySummary({ stats }: WeeklySummaryProps) {
   ];
 
   return (
-    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4">
+    <div className="bg-surface-card rounded-2xl shadow-sm border border-accent-100 p-4 mb-4 animate-fade-in-up">
       <div className="flex items-center gap-2 mb-4">
         <TrendingUp className="w-5 h-5 text-primary-600" />
         <h3 className="font-semibold text-text-primary">Weekly Summary</h3>
       </div>
 
       {stats.streakDays >= 3 && (
-        <div className="mb-4 p-3 rounded-xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200">
+        <div className="mb-4 p-3 rounded-xl bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 animate-pop-in">
           <div className="flex items-center justify-center gap-2">
-            <span className="text-2xl">{getStreakEmoji(stats.streakDays)}</span>
+            <Flame className="w-6 h-6 text-amber-600 animate-pulse-soft" />
             <span className="font-semibold text-amber-800">
               {stats.streakDays} day streak! Keep it up!
             </span>
-            <span className="text-2xl">{getStreakEmoji(stats.streakDays)}</span>
+            <Flame className="w-6 h-6 text-amber-600 animate-pulse-soft" />
           </div>
         </div>
       )}
 
       <div className="grid grid-cols-2 gap-3">
-        {statItems.map((item) => (
+        {statItems.map((item, index) => (
           <div
             key={item.label}
-            className={`${item.bgColor} rounded-xl p-3`}
+            className={`${item.bgColor} rounded-xl p-3 animate-fade-in-up`}
+            style={{ animationDelay: `${0.1 * (index + 1)}s` }}
           >
             <div className="flex items-center gap-2 mb-2">
               <item.icon className={`w-4 h-4 ${item.iconColor}`} />

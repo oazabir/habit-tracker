@@ -17,7 +17,7 @@ export function Navigation({ activeTab, onTabChange, hasGroup }: NavigationProps
   ];
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 bg-surface-card border-t border-accent-100 safe-area-bottom">
+    <nav className="fixed bottom-0 left-0 right-0 bg-surface-card/95 backdrop-blur-sm border-t border-accent-100 safe-area-bottom animate-fade-in-up">
       <div className="max-w-lg mx-auto">
         <div className="flex justify-around py-2">
           {tabs.map((tab) => {
@@ -27,18 +27,18 @@ export function Navigation({ activeTab, onTabChange, hasGroup }: NavigationProps
                 key={tab.id}
                 onClick={() => onTabChange(tab.id)}
                 className={`
-                  flex flex-col items-center py-2 px-4 rounded-xl transition-all duration-200
+                  flex flex-col items-center py-2 px-4 rounded-xl transition-all duration-300
                   touch-manipulation
-                  ${isActive ? 'text-primary-500' : 'text-text-light'}
+                  ${isActive ? 'text-primary-500 -translate-y-0.5' : 'text-text-light'}
                 `}
               >
                 <div className="relative">
-                  <tab.icon className={`w-6 h-6 ${isActive ? 'stroke-2' : ''}`} />
+                  <tab.icon className={`w-6 h-6 transition-transform duration-300 ${isActive ? 'stroke-2 scale-110' : ''}`} />
                   {tab.id === 'group' && hasGroup && (
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-primary-500 rounded-full" />
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-primary-500 rounded-full animate-pulse-soft" />
                   )}
                 </div>
-                <span className={`text-xs mt-1 ${isActive ? 'font-semibold' : ''}`}>
+                <span className={`text-xs mt-1 transition-all ${isActive ? 'font-semibold' : ''}`}>
                   {tab.label}
                 </span>
               </button>
